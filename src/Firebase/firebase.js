@@ -4,7 +4,9 @@ import {
     addDoc, 
     collection,
     doc,
-    getDocs} from "firebase/firestore"
+    getDocs,
+    where,
+    query} from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAy_IPAPF-BBAL-yN1IDnOZotcUA-L-RLM",
@@ -190,8 +192,31 @@ export async function getProperties() {
     const propiedades = snapshot.docs.map((item) => {
         let propiedad = item.data()
         propiedad.id = item.id
-        return propiedad})
-
+        return propiedad
+    })
     return propiedades
 }
 
+export async function filterCity(cityid) {
+    const data = collection(db, "properties")
+    const q = query(data, where("city", "==", cityid ))
+    const snapshot = await getDocs(q)
+    const propiedades = snapshot.docs.map((item) => {
+        let propiedad = item.data()
+        propiedad.id = item.id
+        return propiedad
+    })
+    return propiedades
+}
+
+export async function filterGuest(maxGuestsId) {
+    const data = collection(db, "properties")
+    const q = query(data, where("maxGuests", "==", Number(maxGuestsId)))
+    const snapshot = await getDocs(q)
+    const propiedades = snapshot.docs.map((item) => {
+        let propiedad = item.data()
+        propiedad.id = item.id
+        return propiedad
+    })
+    return propiedades
+}
