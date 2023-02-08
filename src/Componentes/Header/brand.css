@@ -1,0 +1,21 @@
+.brand-logo {
+    color: #EB5757;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+.brand-link{
+    text-decoration: none;
+}
+
+.img-logo {
+    width: 21.65px;
+    height: 18.75px;
+    border-radius: 3px;
+    left: 94px;
+    top: 46px;
+    color: #EB5757;
+    transform: rotate(270deg);
+}

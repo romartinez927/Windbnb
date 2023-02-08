@@ -4,6 +4,7 @@ import Header from "./Componentes/Header/Header"
 import Footer from "./Componentes/Footer/Footer"
 import ItemListContainer from "./Componentes/ItemListContainer/ItemListContainer"
 import { WindProvider } from './context/WindProvider';
+import Filtros from './Componentes/Filtros/Filtros';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={ <ItemListContainer /> }/>
                 <Route path="/city/:cityid" element={ <ItemListContainer /> }/>
+                <Route path="/filtros" element={ <Filtros/> } />
             </Routes>
             <Footer />
         </WindProvider>

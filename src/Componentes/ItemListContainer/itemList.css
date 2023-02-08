@@ -1,3 +1,67 @@
 .item-list-img {
-    max-height: 15em
+    width: 350px;
+    height: 238.35px;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.item-list-container-title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+}
+
+.item-list-container-guests {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #4F4F4F;
+}
+
+.super-host-text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #4F4F4F;
+    border: 1px solid #4F4F4F;
+    border-radius: 12px;
+}
+
+.item-list-subtitle {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #828282;
+}
+
+.fa-star {
+    color: rgba(235, 87, 87, 0.72);
+}
+
+.item-list-rating {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4F4F4F;
+}
+
+.item-list-title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #333333;
 }

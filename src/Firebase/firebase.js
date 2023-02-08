@@ -211,7 +211,7 @@ export async function filterCity(cityid) {
 
 export async function filterGuest(maxGuestsId) {
     const data = collection(db, "properties")
-    const q = query(data, where("maxGuests", "==", Number(maxGuestsId)))
+    const q = query(data, where("maxGuests", ">=", Number(maxGuestsId)))
     const snapshot = await getDocs(q)
     const propiedades = snapshot.docs.map((item) => {
         let propiedad = item.data()

@@ -1,11 +1,13 @@
 import SearchPage from "../SearchPage/SearchPage";
+import Brand from "./Brand";
+import "./header.css"
 
 export default function Header() {
     return (
-        <div>
-            <p>header</p>
+        <header className="container-fluid row d-flex justify-content-between">
+            <Brand />
             <SearchPage />
-        </div>
+        </header>
 
     )
 }

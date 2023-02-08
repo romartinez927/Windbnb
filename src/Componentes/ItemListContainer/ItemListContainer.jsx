@@ -13,7 +13,6 @@ export default function ItemListContainer() {
             filterGuest(guests)
                 .then((response) => {
                     setProperties(response)
-                    console.log(response)
                 })
                 .catch((error) => console.log(error))
         }
@@ -38,18 +37,20 @@ export default function ItemListContainer() {
     }
 
     return (
-        <div>
-            <div className="row">
-                <div className="col-6">
-                    <h3>Stays in Findland</h3>
-                    <input type="number" onChange={handleGuestsChange}>
-                    </input>
+        <main>
+            <div className="d-flex justify-content-between align-items-center pb-3">
+                <div className="col-xs-6">
+                    <h3 className="item-list-container-title">Stays in Findland</h3>
+                    {/* <input 
+                        type="number" 
+                        onChange={handleGuestsChange}>
+                    </input> */}
                 </div>
-                <div className="col-6">
-                    {properties && <p>{properties.length - 1}+ Stays</p>}
+                <div className="col-xs-6">
+                    {properties && properties.length > 2 && <p className="item-list-container-guests">{properties.length - 1}+ Stays</p>}
                 </div>
             </div>
-            <div>
+            <div className="row rows-col-1 rows-col-md-2">
                 {
                     properties && properties.length > 0 && properties.map((property) => {
                         return (
@@ -62,7 +63,6 @@ export default function ItemListContainer() {
                     })
                 }
             </div>
-
-        </div>
+        </main>
     )
 }

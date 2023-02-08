@@ -1,5 +1,9 @@
+import "./footer.css"
+
 export default function Footer() {
     return (
-        <p>footer</p>
+        <footer>
+            <p>created by rochi - devChallenges.io</p>
+        </footer>
     )
 }
