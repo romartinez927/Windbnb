@@ -1,8 +1,8 @@
 import Brand from "../Header/Brand"
 import ItemListContainer from "../ItemListContainer/ItemListContainer"
-import PaginaConFiltros from "../PaginaConFiltros/PaginaConFiltros"
+import PaginaConFiltros from "../FilterContainer/FilterContainer"
 
-export default function Filtros() {
+export default function PageWithFilters() {
     return (
         <>
             <PaginaConFiltros />

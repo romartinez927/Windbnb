@@ -1,6 +1,5 @@
 import SearchPage from "../SearchPage/SearchPage";
 import Brand from "./Brand";
-import "./header.css"
 
 export default function Header() {
     return (

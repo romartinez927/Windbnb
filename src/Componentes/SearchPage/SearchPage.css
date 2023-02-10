@@ -10,13 +10,9 @@
     border-radius: 16px;
 }
 
-.border-right {
-    border-right: 1px solid #F2F2F2;
-    color:#FFFFFF
-}
-
-.header-text {
+.search-page-text {
     font-family: 'Mulish';
     font-size: 14px;
     line-height: 18px;
+    border-right: 1px solid #F2F2F2;
 }

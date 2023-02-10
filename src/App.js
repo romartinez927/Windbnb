@@ -4,7 +4,7 @@ import Header from "./Componentes/Header/Header"
 import Footer from "./Componentes/Footer/Footer"
 import ItemListContainer from "./Componentes/ItemListContainer/ItemListContainer"
 import { WindProvider } from './context/WindProvider';
-import Filtros from './Componentes/Filtros/Filtros';
+import Filtros from './Componentes/PageWithFilters/PageWithFilters';
 
 function App() {
   return (
