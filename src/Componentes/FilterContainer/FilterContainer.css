@@ -63,3 +63,34 @@
     text-transform: uppercase;
     color: #333333;
 }
+
+.filter-container-guests-title {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
+}
+
+.filter-container-guests-subtitle {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #BDBDBD
+}
+
+.filter-input-text {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border: 0
+}
+
+.fa-location {
+    padding-right: .5em;
+}

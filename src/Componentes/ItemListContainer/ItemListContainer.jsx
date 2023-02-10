@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
-import { getProperties, filterCity, filterGuest } from "../../Firebase/firebase"
+import { getProperties, filterCity } from "../../Firebase/firebase"
 import { useParams } from "react-router-dom"
 
 export default function ItemListContainer() {
     const [properties, setProperties] = useState()
-    const [guests, setGuests] = useState()
     let {cityid} = useParams()
 
     useEffect(() => {
-        if(guests && guests > 0) {
-            filterGuest(guests)
-                .then((response) => {
-                    setProperties(response)
-                })
-                .catch((error) => console.log(error))
-        }
-        else if(!cityid) {
+        if(!cityid) {
             getProperties()
                 .then((response) => {
                     setProperties(response)
@@ -29,12 +21,12 @@ export default function ItemListContainer() {
                 })
                 .catch((error) => console.log(error))
         }
-    }, [cityid, guests])
+    }, [cityid])
 
-    function handleGuestsChange(e) {
-        setGuests(e.target.value)
-        console.log(guests)
-    }
+    // function handleGuestsChange(e) {
+    //     setGuests(e.target.value)
+    //     console.log(guests)
+    // }
 
     return (
         <main>
