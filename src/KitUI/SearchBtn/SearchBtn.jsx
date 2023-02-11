@@ -4,9 +4,9 @@ import "./SearchBtn.css"
 
 export default function SearchBtn() {
     return (
-        <a className="search-btn row align-items-end" href="/">
+        <div className="search-btn row align-items-end">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             <p>Search</p>
-        </a>
+        </div>
     )
 }

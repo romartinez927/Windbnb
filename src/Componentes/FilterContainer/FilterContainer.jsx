@@ -1,21 +1,19 @@
 import "./FilterContainer.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSquareMinus, faSquarePlus, faXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons"
-import SearchBtn from "../../KitUI/SearchBtn/SearchBtn"
-import { useNavigate } from "react-router-dom"
-import FilterItem from "./FilterItem"
-import { useState } from "react"
+import { faSquareMinus, faSquarePlus, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { useEffect, useState } from "react"
 
-export default function FilterContainer() {
-    let navigate = useNavigate()
+export default function FilterContainer({childToParent}) {
     const [filter, setFilter] = useState(true)
     const [city, setCity] = useState("Choose a city")
     const [adults, setAdults] = useState(0)
     const [childs, setChilds] = useState(0)
+    const arr = []
 
-    function handleClick() {
-        navigate("/")
-      }
+    useEffect(() => {
+        arr.push(city, adults+childs)
+        console.log(arr)
+    }, [city, adults, childs])
 
     const guests = childs + adults
 
@@ -50,15 +48,7 @@ export default function FilterContainer() {
     }
   
     return(
-        <div className="modal active container-fluid">
-            <div className="d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 className="filter-container-search">Edit your search</h5>
-                </div>
-                <div>
-                    <FontAwesomeIcon onClick={handleClick} className="fa-xmark fs-5" icon={faXmark}/>
-                </div>
-            </div>
+        <div className="container-fluid">
             <div className="filter-container-location">
                 <div onClick={handleFilterOne} className="d-flex flex-column px-3 justify-content-center">
                     <div>
@@ -119,10 +109,9 @@ export default function FilterContainer() {
                                 <FontAwesomeIcon onClick={addChilds} icon={faSquarePlus} />
                             </div>
                         </div>
-
                     </div>
             }
-            <SearchBtn />
+            <button onClick={() => childToParent(arr)}>alo</button>
         </div>
     )
 }

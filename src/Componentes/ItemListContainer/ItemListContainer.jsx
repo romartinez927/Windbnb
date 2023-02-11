@@ -1,60 +1,69 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
-import { getProperties, filterCity } from "../../Firebase/firebase"
-import { useParams } from "react-router-dom"
+import { filterCity, getProperties } from "../../Firebase/firebase"
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 
 export default function ItemListContainer() {
     const [properties, setProperties] = useState()
-    let {cityid} = useParams()
+    const [data, setData] = useState()
 
     useEffect(() => {
-        if(!cityid) {
-            getProperties()
-                .then((response) => {
-                    setProperties(response)
-                })
-                .catch((error) => console.log(error))
-        } else {
-            filterCity(cityid)
-                .then((response) => {
-                    setProperties(response)
-                })
-                .catch((error) => console.log(error))
-        }
-    }, [cityid])
+        getProperties()
+            .then((res) => {
+                setProperties(res)
+                console.log(res)
+            })
+            .catch((error) => console.log(error))
+    }, [])
 
-    // function handleGuestsChange(e) {
-    //     setGuests(e.target.value)
-    //     console.log(guests)
+    const childToParentTwo = (res) => {
+        if(res) {
+            setData(res)
+            console.log(res)
+        }
+        else(console.log("waiit"))
+      }
+
+    console.log(properties)
+    // let filterProperties = []
+    // let arr = properties
+
+
+    // if (properties) {
+    //     arr = ["Oulu", 3]
+    //     filterProperties = properties.filter(property => property.city === arr[0] && property.maxGuests >= arr[1])
+    //     console.log(filterProperties)
     // }
 
+
     return (
-        <main>
-            <div className="d-flex justify-content-between align-items-center pb-3">
-                <div className="col-xs-6">
-                    <h3 className="item-list-container-title">Stays in Findland</h3>
-                    {/* <input 
-                        type="number" 
-                        onChange={handleGuestsChange}>
-                    </input> */}
+        <>
+            <Header childToParentTwo={childToParentTwo}/>
+            <main>
+                <div className="d-flex justify-content-between align-items-center pb-3">
+                    <div className="col-xs-6">
+                        <h3 className="item-list-container-title">Stays in Findland</h3>
+                    </div>
+                    <div className="col-xs-6">
+                        {properties && properties.length > 2 && <p className="item-list-container-guests">{properties.length - 1}+ Stays</p>}
+                    </div>
                 </div>
-                <div className="col-xs-6">
-                    {properties && properties.length > 2 && <p className="item-list-container-guests">{properties.length - 1}+ Stays</p>}
+                <div className="row rows-col-1 rows-col-md-2">
+                    {
+                            properties && properties.length > 0 && properties.map((property) => {
+                                return (
+                                    <ItemList 
+                                        key={property.title} 
+                                        id={property.title} 
+                                        property={property} 
+                                    />
+                                )
+                            })
+                    }
                 </div>
-            </div>
-            <div className="row rows-col-1 rows-col-md-2">
-                {
-                    properties && properties.length > 0 && properties.map((property) => {
-                        return (
-                            <ItemList 
-                                key={property.title} 
-                                id={property.title} 
-                                property={property} 
-                            />
-                        )
-                    })
-                }
-            </div>
-        </main>
+            </main>
+            <Footer />
+        </>
     )
 }

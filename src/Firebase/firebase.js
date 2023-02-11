@@ -3,7 +3,6 @@ import {
     getFirestore, 
     addDoc, 
     collection,
-    doc,
     getDocs,
     where,
     query} from "firebase/firestore"
@@ -16,7 +15,6 @@ const firebaseConfig = {
   messagingSenderId: "47700660950",
   appId: "1:47700660950:web:14a607cc7f892c7777af77"
 };
-
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
@@ -211,7 +209,7 @@ export async function filterCity(cityid) {
 
 export async function filterGuest(maxGuestsId) {
     const data = collection(db, "properties")
-    const q = query(data, where("maxGuests", ">=", Number(maxGuestsId)))
+    const q = query(data, where("maxGuests", ">=", Number(maxGuestsId)), )
     const snapshot = await getDocs(q)
     const propiedades = snapshot.docs.map((item) => {
         let propiedad = item.data()
