@@ -12,7 +12,7 @@ export default function FilterContainer({childToParent}) {
 
     useEffect(() => {
         arr.push(city, adults+childs)
-        console.log(arr)
+        childToParent(arr)
     }, [city, adults, childs])
 
     const guests = childs + adults
@@ -111,7 +111,6 @@ export default function FilterContainer({childToParent}) {
                         </div>
                     </div>
             }
-            <button onClick={() => childToParent(arr)}>alo</button>
         </div>
     )
 }

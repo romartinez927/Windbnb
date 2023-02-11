@@ -9,13 +9,13 @@ import "../FilterContainer/FilterContainer.css"
 import SearchBtn from "../../KitUI/SearchBtn/SearchBtn";
 
 
-export default function Header(childToParentTwo) {
+export default function Header({childToParentTwo}) {
     const [show, setShow] = useState(false);
-    const [data, setData] = useState('');
+    const [data, setData] = useState("");
   
     const childToParent = (arr) => {
       setData(arr)
-      console.log(arr)
+      childToParentTwo(data)
     }
     
     const handleClose = () => setShow(false);
@@ -27,12 +27,12 @@ export default function Header(childToParentTwo) {
             <div onClick={handleShow} className="container-fluid p-4 col-xl-3 col-md-3 col-xs-10 text-center">
                 <div className="d-flex search-container py-2 px-4 gap-4">
                     <div className="search-page-text ">
-                        <p onChange={() =>childToParentTwo(data)}>
+                        <p>
                             {data ? data[0] + ", Finland" : "Choose a city"}
                         </p>
                     </div>
                     <div className="search-page-text">
-                        <p onChange={() =>childToParentTwo(data)}>
+                        <p>
                             {data && data !== undefined ? data[1] + " Guests" : "Add Guests"}
                         </p>
                     </div>
@@ -46,7 +46,7 @@ export default function Header(childToParentTwo) {
                 <Offcanvas.Body>
                     <FilterContainer childToParent={childToParent}/>
                     <div onClick={handleClose} className="search-btn d-flex justify-content-center align-items-center">
-                        <span><FontAwesomeIcon icon={faMagnifyingGlass} /> Search</span>
+                        <span onClick={() => childToParentTwo(data)}><FontAwesomeIcon icon={faMagnifyingGlass} /> Search</span>
                     </div>
                 </Offcanvas.Body>
             </Offcanvas>

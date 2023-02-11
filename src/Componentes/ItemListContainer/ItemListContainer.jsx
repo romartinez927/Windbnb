@@ -1,40 +1,42 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
-import { filterCity, getProperties } from "../../Firebase/firebase"
+import { getProperties, filterCity, filterGuest } from "../../Firebase/firebase"
 import Header from "../Header/Header"
-import Footer from "../Footer/Footer"
 
 export default function ItemListContainer() {
     const [properties, setProperties] = useState()
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
+
+    const childToParentTwo = (data) => {
+        setData(data)
+    }
 
     useEffect(() => {
-        getProperties()
+        if(typeof data[0] !== "string") {
+            getProperties()
             .then((res) => {
                 setProperties(res)
-                console.log(res)
             })
             .catch((error) => console.log(error))
-    }, [])
-
-    const childToParentTwo = (res) => {
-        if(res) {
-            setData(res)
-            console.log(res)
+        } else if (typeof data[0] == "string" && typeof data[1] == "number"){
+            filterCity(data[0])
+            .then((res) => {
+                setProperties(res)
+            })
+            .catch((error) => console.log(error))
         }
-        else(console.log("waiit"))
-      }
 
-    console.log(properties)
-    // let filterProperties = []
-    // let arr = properties
+    }, [data])
 
+    // let arr = []
 
-    // if (properties) {
-    //     arr = ["Oulu", 3]
-    //     filterProperties = properties.filter(property => property.city === arr[0] && property.maxGuests >= arr[1])
-    //     console.log(filterProperties)
-    // }
+    // useEffect(() => {
+    //     if (typeof data[1] == "number" && data [1] > 0) {
+    //         arr.push(properties)
+    //         arr.filter(property => property.maxGuests >= data[1])
+    //         setProperties(arr)
+    //     }
+    // }, [data])
 
 
     return (
@@ -51,7 +53,19 @@ export default function ItemListContainer() {
                 </div>
                 <div className="row rows-col-1 rows-col-md-2">
                     {
-                            properties && properties.length > 0 && properties.map((property) => {
+                        properties ? (
+                            typeof data[1] == "number" && data [1] > 0 ? (
+                                properties.filter(property => property.maxGuests >= data[1]).map((property) => {
+                                    return (
+                                        <ItemList 
+                                            key={property.title} 
+                                            id={property.title} 
+                                            property={property} 
+                                        />
+                                    )
+                                })
+                            ) 
+                            : properties.map((property) => {
                                 return (
                                     <ItemList 
                                         key={property.title} 
@@ -60,10 +74,11 @@ export default function ItemListContainer() {
                                     />
                                 )
                             })
+                        ) 
+                        : <></>
                     }
                 </div>
             </main>
-            <Footer />
         </>
     )
 }
