@@ -7,7 +7,7 @@ export default function ItemList(props) {
 
     return (
         <div className="item-list col">
-            <div className="justify-content-center text-center">
+            <div>
                 <img src={photo} alt={title} className="item-list-img" />
             </div>
             <div className="item-list-content justify-content-center text-center">

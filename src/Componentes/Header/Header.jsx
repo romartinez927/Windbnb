@@ -23,15 +23,15 @@ export default function Header({childToParentTwo}) {
         <header className="container-fluid row py-2">
             <Brand />
             <div onClick={handleShow} className="container-fluid p-3 col-xl-3 col-md-5 col-xs-11">
-                <div className="d-flex search-container py-3 gap-4 text-center justify-content-center">
+                <div className="d-flex search-container align-items-center gap-4 justify-content-center">
                     <div className="search-page-text">
                         <p>
-                            {data ? data[0] + ", Finland" : "Choose a city"}
+                            {data && data[0] !== "Choose a city" ? data[0] + ", Finland" : "Choose a city"}
                         </p>
                     </div>
                     <div className="search-page-text">
                         <p>
-                            {data && data !== undefined ? data[1] + " Guests" : "Add Guests"}
+                            {data && data[1] !== 0 ? data[1] + " Guests" : "Add Guests"}
                         </p>
                     </div>
                     <FontAwesomeIcon className="fa-glass" icon={faMagnifyingGlass} />

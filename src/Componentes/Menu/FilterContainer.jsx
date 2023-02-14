@@ -2,7 +2,7 @@ import "./FilterContainer.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSquareMinus, faSquarePlus } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
-import FilterItem from "./FilterCity"
+import FilterCity from "./FilterCity"
 
 export default function FilterContainer({childToParent}) {
     const [filter, setFilter] = useState(true)
@@ -50,38 +50,30 @@ export default function FilterContainer({childToParent}) {
     return(
         <div className="container-fluid">
             <div className="filter-container-location">
-                <div onClick={handleFilterOne} className="d-flex flex-column px-3 justify-content-center">
-                    <div>
-                        <p className="filter-container-location-txt">Location</p>
-                    </div>
-                    <div>
-                        <h5 className="filter-container-location-title">{city}, Finland</h5>
-                    </div>
+                <div onClick={handleFilterOne} className="d-flex flex-column px-3">
+                    <p className="filter-container-location-txt pt-2">Location</p>
+                    <h5 className="filter-container-location-title pb-1">{city}, Finland</h5>
                 </div>
-                <div onClick={handleFilterTwo} className="d-flex flex-column justify-content-center px-3 filter-container-line">
-                    <div>
-                        <p className="filter-container-location-txt">Guests</p>
-                    </div>
-                    <div>
-                        <h5 className="filter-container-location-title">
-                            { guests === 0 ? "Add Guests" : guests + " guests"}
-                        </h5>
-                    </div>
+                <div onClick={handleFilterTwo} className="d-flex flex-column px-3 filter-container-line">
+                    <p className="filter-container-location-txt pt-2">Guests</p>
+                    <h5 className="filter-container-location-title pb-1">
+                        { guests === 0 ? "Add Guests" : guests + " guests"}
+                    </h5>
                 </div>
             </div>
             {
                 filter ? (
-                    <div className="p-3">
-                        <FilterItem value="Helsinki" onClick={handleCity} />
-                        <FilterItem value="Oulu" onClick={handleCity} />
-                        <FilterItem value="Turku" onClick={handleCity} />
-                        <FilterItem value="Vaasa" onClick={handleCity} />
+                    <div className="row p-3">
+                        <FilterCity value="Helsinki" onClick={handleCity} />
+                        <FilterCity value="Oulu" onClick={handleCity} />
+                        <FilterCity value="Turku" onClick={handleCity} />
+                        <FilterCity value="Vaasa" onClick={handleCity} />
                     </div>
-                ) : <div>
+                ) : <div className="text-center py-4">
                         <div className="p-2">
                             <h5 className="filter-container-guests-title">Adults</h5>
                             <p className="filter-container-guests-subtitle">Age 13 or above</p>
-                            <div className="d-flex gap-2">
+                            <div className="d-flex gap-2 justify-content-center">
                                 <FontAwesomeIcon onClick={substractAdults} icon={faSquareMinus} />
                                 <p className="filter-container-guests-title">{adults}</p>
                                 <FontAwesomeIcon onClick={addAdults} icon={faSquarePlus} />
@@ -90,7 +82,7 @@ export default function FilterContainer({childToParent}) {
                         <div className="p-2">
                             <h5 className="filter-container-guests-title">Children</h5>
                             <p className="filter-container-guests-subtitle">Ages 2-12</p>
-                            <div className="d-flex gap-2">
+                            <div className="d-flex gap-2 justify-content-center">
                                 <FontAwesomeIcon onClick={substractChilds} icon={faSquareMinus} />
                                 <p className="filter-container-guests-title">{childs}</p>
                                 <FontAwesomeIcon onClick={addChilds} icon={faSquarePlus} />
