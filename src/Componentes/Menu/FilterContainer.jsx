@@ -1,7 +1,8 @@
 import "./FilterContainer.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSquareMinus, faSquarePlus, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { faSquareMinus, faSquarePlus } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
+import FilterItem from "./FilterCity"
 
 export default function FilterContainer({childToParent}) {
     const [filter, setFilter] = useState(true)
@@ -9,13 +10,12 @@ export default function FilterContainer({childToParent}) {
     const [adults, setAdults] = useState(0)
     const [childs, setChilds] = useState(0)
     const arr = []
+    const guests = childs + adults
 
     useEffect(() => {
-        arr.push(city, adults+childs)
+        arr.push(city, guests)
         childToParent(arr)
-    }, [city, adults, childs])
-
-    const guests = childs + adults
+    }, [city, guests])
 
     function handleFilterOne() {
         setFilter(true)
@@ -57,7 +57,6 @@ export default function FilterContainer({childToParent}) {
                     <div>
                         <h5 className="filter-container-location-title">{city}, Finland</h5>
                     </div>
-
                 </div>
                 <div onClick={handleFilterTwo} className="d-flex flex-column justify-content-center px-3 filter-container-line">
                     <div>
@@ -73,25 +72,13 @@ export default function FilterContainer({childToParent}) {
             {
                 filter ? (
                     <div className="p-3">
-                        <div className="py-3">
-                            <FontAwesomeIcon className="fa-location" icon={faLocationDot} />
-                            <input onClick={handleCity} className="filter-input-text" value= "Helsinki" readOnly />
-                        </div>
-                        <div className="py-3">
-                            <FontAwesomeIcon className="fa-location" icon={faLocationDot} />
-                            <input onClick={handleCity} className="filter-input-text" value= "Oulu" readOnly />
-                        </div>
-                        <div className="py-3">
-                            <FontAwesomeIcon className="fa-location" icon={faLocationDot} />
-                            <input onClick={handleCity} className="filter-input-text" value= "Turku" readOnly/>
-                        </div>
-                        <div className="py-3">
-                            <FontAwesomeIcon className="fa-location" icon={faLocationDot} />
-                            <input onClick={handleCity} className="filter-input-text" value= "Vaasa" readOnly/>
-                        </div>
+                        <FilterItem value="Helsinki" onClick={handleCity} />
+                        <FilterItem value="Oulu" onClick={handleCity} />
+                        <FilterItem value="Turku" onClick={handleCity} />
+                        <FilterItem value="Vaasa" onClick={handleCity} />
                     </div>
                 ) : <div>
-                        <div className="d-flex flex-column p-2">
+                        <div className="p-2">
                             <h5 className="filter-container-guests-title">Adults</h5>
                             <p className="filter-container-guests-subtitle">Age 13 or above</p>
                             <div className="d-flex gap-2">

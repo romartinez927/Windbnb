@@ -1,0 +1,17 @@
+.filter-input-text {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border: 0;
+    color: #4F4F4F;
+    outline: none;
+    cursor: pointer
+}
+
+.fa-location {
+    padding-right: .5em;
+    color: #4F4F4F
+}
+

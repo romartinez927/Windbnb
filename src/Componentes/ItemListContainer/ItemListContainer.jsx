@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
-import { getProperties, filterCity, filterGuest } from "../../Firebase/firebase"
+import { getProperties, filterCity } from "../../Firebase/firebase"
 import Header from "../Header/Header"
 
 export default function ItemListContainer() {
@@ -25,25 +25,14 @@ export default function ItemListContainer() {
             })
             .catch((error) => console.log(error))
         }
-
     }, [data])
-
-    // let arr = []
-
-    // useEffect(() => {
-    //     if (typeof data[1] == "number" && data [1] > 0) {
-    //         arr.push(properties)
-    //         arr.filter(property => property.maxGuests >= data[1])
-    //         setProperties(arr)
-    //     }
-    // }, [data])
-
 
     return (
         <>
             <Header childToParentTwo={childToParentTwo}/>
+            {/* Contenedor de cards */}
             <main>
-                <div className="d-flex justify-content-between align-items-center pb-3">
+                <div className="d-flex justify-content-between align-items-center pb-3 px-4">
                     <div className="col-xs-6">
                         <h3 className="item-list-container-title">Stays in Findland</h3>
                     </div>
@@ -51,10 +40,11 @@ export default function ItemListContainer() {
                         {properties && properties.length > 2 && <p className="item-list-container-guests">{properties.length - 1}+ Stays</p>}
                     </div>
                 </div>
-                <div className="row rows-col-1 rows-col-md-2">
+                <div className="row rows-col-1 rows-col-md-2 gap-5 justify-content-center text-center">
                     {
                         properties ? (
-                            typeof data[1] == "number" && data [1] > 0 ? (
+                            // Filtro según la cantidad de personas que se hospeden
+                            typeof data[1] == "number" && data[1] > 0 ? (
                                 properties.filter(property => property.maxGuests >= data[1]).map((property) => {
                                     return (
                                         <ItemList 
