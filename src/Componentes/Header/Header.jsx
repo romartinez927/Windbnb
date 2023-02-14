@@ -20,7 +20,7 @@ export default function Header({childToParentTwo}) {
     const handleShow = () => setShow(true);
 
     return (
-        <header className="container-fluid row py-3">
+        <header className="container-fluid row py-2">
             <Brand />
             <div onClick={handleShow} className="container-fluid p-3 col-xl-3 col-md-5 col-xs-11">
                 <div className="d-flex search-container py-3 gap-4 text-center justify-content-center">
