@@ -8,9 +8,7 @@ export default function ItemListContainer() {
     const [properties, setProperties] = useState()
     const [data, setData] = useState([])
 
-    const childToParentTwo = (data) => {
-        setData(data)
-    }
+    const childToParentTwo = (data) => setData(data)
 
     useEffect(() => {
         if (typeof data[0] !== "string") {
@@ -43,7 +41,7 @@ export default function ItemListContainer() {
                         {properties && properties.length > 2 && <p className="item-list-container-guests">{properties.length - 1}+ Stays</p>}
                     </div>
                 </div>
-                <div className="row rows-col-1 rows-col-md-2 gap-5 justify-content-center text-center">
+                <div className="row rows-col-1 rows-col-md-2 gap-4 justify-content-center text-center">
                     {
                         properties ? (
                             // Filtro según la cantidad de personas que se hospeden

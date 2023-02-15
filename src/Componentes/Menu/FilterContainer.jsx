@@ -9,42 +9,33 @@ export default function FilterContainer({childToParent}) {
     const [city, setCity] = useState("Choose a city")
     const [adults, setAdults] = useState(0)
     const [childs, setChilds] = useState(0)
-    const arr = []
     const guests = childs + adults
 
+    const handleCity = (e) => setCity(e.target.value)
+
     useEffect(() => {
+        const arr = []
         arr.push(city, guests)
         childToParent(arr)
     }, [city, guests])
 
-    function handleFilterOne() {
-        setFilter(true)
-    }
+    const handleFilterOne = () => setFilter(true)
+    const handleFilterTwo = () => setFilter(false)
 
-    function handleFilterTwo() {
-        setFilter(false)
-    }
-
-    function addChilds() {
-        setChilds(childs + 1)
-    }
-
+    const addChilds = () => setChilds(childs + 1)
+    
     function substractChilds() {
-        if (childs > 0)
-        setChilds(childs - 1)
+        if (childs > 0) {
+            setChilds(childs - 1)
+        }
     }
 
-    function addAdults() {
-        setAdults(adults + 1)
-    }
+    const addAdults = () => setAdults(adults + 1)
 
     function substractAdults() {
-        if (adults > 0)
-        setAdults(adults - 1)
-    }
-
-    function handleCity(e) {
-        setCity(e.target.value)
+        if (adults > 0) {
+            setAdults(adults - 1)
+        }
     }
   
     return(

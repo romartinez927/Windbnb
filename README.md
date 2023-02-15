@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/romartinez927/Windbnb">
+    <a href="https://github.com/romartinez927/Windbnb.git">
       Solution
     </a>
     <span> | </span>
@@ -38,12 +38,16 @@
 
 ![screenshot](./public/images/screenshot.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
+Buenaas, me llamo Rosario, y este es mi solución para el desafío de Devchallenge
 
 - Where can I see your demo?
+Puedes ver el demo en https://windbnb-blond.vercel.app
 - What was your experience?
+Fue una buena experiencia, me gustó mucho el resultado final y me sirvió mucho para profundizar un poco más en React, aunque también me hizo ver que todavía me falta mucho para aprender! 
 - What have you learned/improved?
+Aprendí que la mejor forma de aprender es haciendo proyectos, después de haber terminado el curso de React creía que lo entendía, pero haciendo este proyecto me di cuenta que habían temas que tenía que repasar. Ahora me siento un poco más segura en cuanto al uso del Framework, y para mi próximo proyecto continuaré profundizandolo aún más.
 - Your wisdom? :)
+No dejes para mañana lo que podes hacer hooooy!!
 
 ### Built With
 
